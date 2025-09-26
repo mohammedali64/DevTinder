@@ -1,15 +1,12 @@
 const express = require("express");
 const app = express();
+const {adminAuth} = require("./middlewares/auth");
 
-app.use("/hello",(req,res)=>{
-    res.send("HAAAA HAAAA HAAAAA HAAAAA")
-})
-app.get("/test",(req,res)=>{
-    res.send("Hello  Express!");
-})
-app.post("/hello",(req,res)=>{
-    res.send("Data sucessfully saved in DB");
-})
+
+app.get("/user",adminAuth,(req,res,next)=>{
+    res.send("Route handler 1");
+}
+)
 
 app.listen(7777,() => {
     console.log("Server is running on port 3000...");
